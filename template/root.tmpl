@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width">
 	<meta name="theme-color" content="#375EAB">
 	<title>{{template "title" .}}</title>
-	<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+	<link type="text/css" rel="stylesheet" href="/style.css">
 	<link rel="alternate" type="application/atom+xml" title="blog.golang.org - Atom Feed" href="//blog.golang.org/feed.atom" />
 	<script type="text/javascript">window.initFuncs = [];</script>
 	<style>
@@ -54,17 +54,19 @@
 
 <div id="topbar"><div class="container">
 
-<div class="top-heading" id="heading-wide"><a href="{{.GodocURL}}/">The Go Programming Language</a></div>
-<div class="top-heading" id="heading-narrow"><a href="{{.GodocURL}}/">Go</a></div>
+<div class="top-heading" id="heading-wide"><a href="{{.GodocURL}}/">
+	<img src="/harvey-os-logo.png" />
+</a></div>
+<div class="top-heading" id="heading-narrow"><a href="{{.GodocURL}}/">Harvey</a></div>
 <a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
 <form method="GET" action="{{.GodocURL}}/search">
 <div id="menu">
-<a href="{{.GodocURL}}/doc/">Documents</a>
-<a href="{{.GodocURL}}/pkg/">Packages</a>
-<a href="{{.GodocURL}}/project/">The Project</a>
-<a href="{{.GodocURL}}/help/">Help</a>
-<a href="{{.BasePath}}/">Blog</a>
-<input type="text" id="search" name="q" class="inactive" value="Search" placeholder="Search">
+<a href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a>
+<a href="https://github.com/harvey-os/harvey/issues">Issues</a>
+<a href="https://harvey-os.org">Project</a>
+<a href="https://groups.google.com/forum/#!forum/harvey">Mailing List</a>
+<a href="/">Blog</a>
+
 </div>
 </form>
 
@@ -88,21 +90,18 @@
 	
 	<h4>Links</h4>
 	<ul>
-	<li><a href='//golang.org/'>golang.org</a></li>
-	<li><a href='//golang.org/doc/install.html'>Install Go</a></li>
-	<li><a href='//tour.golang.org/'>A Tour of Go</a></li>
-	<li><a href='//golang.org/doc/'>Go Documentation</a></li>
-	<li><a href='//groups.google.com/group/golang-nuts'>Go Mailing List</a></li>
-	<li><a href='//plus.google.com/101406623878176903605'>Go on Google+</a></li>
-	<li><a href='//plus.google.com/112164155169467723645/posts'>Go+ Community</a></li>
-	<li><a href='//twitter.com/golang'>Go on Twitter</a></li>
+	<li><a href='//harvey-os.org/'>Harvey OS</a></li>
+	<li><a href='https://github.com/Harvey-OS/harvey/wiki/Getting-Started'>Getting Started</a></li>
+	<li><a href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a></li>
+	<li><a href="https://groups.google.com/forum/#!forum/harvey">Mailing List</a></li>
+	<li><a href='//twitter.com/harvey_os'>Harvey on Twitter</a></li>
 	</ul>
 	
 	<p><a href="{{.BasePath}}/index">Blog index</a></p>
 </div><!-- #sidebar -->
 
 <div id="content">
-	<h1><a href="{{.BasePath}}/">The Go Blog</a></h1>
+	<h1><a href="{{.BasePath}}/">The Harvey OS Blog</a></h1>
 	{{template "content" .}}
 </div><!-- #content -->
 
@@ -112,7 +111,7 @@
 	<a href="https://developers.google.com/site-policies#restrictions">noted</a>,
 	the content of this page is licensed under the Creative Commons
 	Attribution 3.0 License,<br>
-	and code is licensed under a <a href="//golang.org/LICENSE">BSD license</a>.<br>
+	and code is licensed under a <a href="//harvey-os.org/LICENSE">BSD license</a>.<br>
 	<a href="//golang.org/doc/tos.html">Terms of Service</a> | 
 	<a href="//www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
 	</p>

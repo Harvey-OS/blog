@@ -17,16 +17,16 @@ import (
 	_ "golang.org/x/tools/playground"
 )
 
-const hostname = "blog.golang.org" // default hostname for blog server
+const hostname = "blog.harvey-os.org" // default hostname for blog server
 
 var config = blog.Config{
 	Hostname:     hostname,
 	BaseURL:      "//" + hostname,
-	GodocURL:     "//golang.org",
+	GodocURL:     "//harvey-os.org",
 	HomeArticles: 5,  // articles to display on the home page
 	FeedArticles: 10, // articles to include in Atom and JSON feeds
 	PlayEnabled:  true,
-	FeedTitle:    "The Go Programming Language Blog",
+	FeedTitle:    "Harvey Operating System Blog",
 }
 
 func init() {
