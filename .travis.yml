@@ -1,0 +1,12 @@
+language: go
+go:
+- 1.5
+install:
+- go get -v -u github.com/Harvey-OS/blog/...
+deploy:
+  provider: gae
+  keyfile: "harvey-blog-66ed626fb878.json"
+  project: "harvey-blog"
+before_install:
+- openssl aes-256-cbc -K $encrypted_a54bc6017363_key -iv $encrypted_a54bc6017363_iv
+  -in harvey-blog-66ed626fb878.json.enc -out harvey-blog-66ed626fb878.json -d
