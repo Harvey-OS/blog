@@ -35,7 +35,7 @@ body {
 }
 a,
 .exampleHeading .text {
-	color: #375EAB;
+	color: #eb6864;
 	text-decoration: none;
 }
 a:hover,
@@ -68,7 +68,7 @@ h4,
 .rootHeading {
 	margin: 20px 0 20px;
 	padding: 0;
-	color: #375EAB;
+	color: #eb6864;
 	font-weight: bold;
 }
 h1 {
@@ -214,7 +214,7 @@ div#menu > a,
 }
 #playgroundButton.active {
 	background: white;
-	color: #375EAB;
+	color: #eb6864;
 }
 a#start,
 div#learn .buttons a,
@@ -392,7 +392,7 @@ div#learn .output pre {
 }
 div#learn .input,
 div#learn .output {
-	border: 1px solid #375EAB;
+	border: 1px solid #eb6864;
 }
 div#learn .buttons {
 	float: right;
@@ -408,7 +408,7 @@ div#learn .toys {
 	margin-top: 8px;
 }
 div#learn .toys select {
-	border: 1px solid #375EAB;
+	border: 1px solid #eb6864;
 	margin: 0;
 }
 div#learn .output .exit {
@@ -528,7 +528,7 @@ div.play .output pre {
 }
 div.play .input,
 div.play .output {
-	border: 1px solid #375EAB;
+	border: 1px solid #eb6864;
 }
 div.play .buttons {
 	float: right;
@@ -554,6 +554,7 @@ div#playground {
 	/* start hidden; revealed by javascript */
 	display: none;
 }
+
 div#playground {
 	position: absolute;
 	top: 63px;
