@@ -1,3 +1,5 @@
-This repository holds the Go Blog server code and content.
+![Harvey](https://harvey-os.org/img/harvey-os-logo.png)
 
-To submit changes to this repository, see http://golang.org/doc/contribute.html.
+This repository holds the Harvey's Blog server code and content.
+
+To submit changes to this repository, see [Contribution Guide](https://github.com/Harvey-OS/harvey/blob/master/CONTRIBUTING.md).
