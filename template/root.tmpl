@@ -1,159 +1,154 @@
-{{/* This template is combined with other templates to render blog pages. */}}
+{{ define "root" }}
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
 
-{{define "root"}}
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width">
-	<meta name="theme-color" content="#f0f0f0">
-	<title>{{template "title" .}}</title>
-	<link type="text/css" rel="stylesheet" href="/style.css">
-	<link rel="alternate" type="application/atom+xml" title="blog.golang.org - Atom Feed" href="//blog.golang.org/feed.atom" />
-	<script type="text/javascript">window.initFuncs = [];</script>
-	<style>
-		#sidebar {
-			float: right;
-			padding-left: 20px;
-			width: 40%;
-			max-width: 250px;
-			background: #F3F3F3;
-			margin: 20px 0 20px 20px;
-		}
-		#sidebar ul {
-			padding: 0;
-		}
-		#sidebar li {
-			list-style-type: none;
-		}
-		#content .author {
-			font-style: italic;
-		}
-		#content .article {
-			margin-bottom: 50px;
-		}
-		#content .date {
-			color: #999;
-		}
-		#content .tags {
-			color: #999;
-			font-size: smaller;
-		}
-		#content .iframe, #content .image {
-			margin: 20px;
-		}
-		#content .title {
-			margin: 20px 0;
-		}
-		#content img {
-			max-width: 100%;
-		}
-	</style>
-</head>
-<body>
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-<div id="topbar"><div class="container">
+      https://www.apache.org/licenses/LICENSE-2.0
 
-<div class="top-heading" id="heading-wide"><a href="{{.GodocURL}}/">
-	<img src="/harvey-os-logo.png" />
-</a></div>
-<div class="top-heading" id="heading-narrow"><a href="{{.GodocURL}}/">Harvey</a></div>
-<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
-<form method="GET" action="{{.GodocURL}}/search">
-<div id="menu">
-<a href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a>
-<a href="https://github.com/harvey-os/harvey/issues">Issues</a>
-<a href="https://harvey-os.org">Project</a>
-<a href="https://groups.google.com/forum/#!forum/harvey">Mailing List</a>
-<a href="/">Blog</a>
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
 
-</div>
-</form>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Introducing Lollipop, a sweet new take on harvey.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>harvey</title>
 
-</div></div>
+    <!-- Page styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-<div id="page">
-<div class="container">
+      <div class="harvey-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="harvey-title mdl-layout-title">
+            <a href="/"><img class="harvey-logo-image" src="images/harvey-os-logo-head.png"></a>
+          </span>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="harvey-header-spacer mdl-layout-spacer"></div>
 
-<div id="sidebar">
-	{{with .Doc}}
-		{{with .Newer}}
-			<h4>Next article</h4>
-			<p><a href="{{.Path}}">{{.Title}}</a></p>
-		{{end}}
-		
-		{{with .Older}}
-			<h4>Previous article</h4>
-			<p><a href="{{.Path}}">{{.Title}}</a></p>
-		{{end}}
-	{{end}}
-	
-	<h4>Links</h4>
-	<ul>
-	<li><a href='//harvey-os.org/'>Harvey OS</a></li>
-	<li><a href='https://github.com/Harvey-OS/harvey/wiki/Getting-Started'>Getting Started</a></li>
-	<li><a href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a></li>
-	<li><a href="https://groups.google.com/forum/#!forum/harvey">Mailing List</a></li>
-	<li><a href='//twitter.com/harvey_os'>Harvey on Twitter</a></li>
-	</ul>
-	
-	<p><a href="{{.BasePath}}/index">Blog index</a></p>
-</div><!-- #sidebar -->
+          <!-- Navigation -->
+          <div class="harvey-navigation-container">
+            <nav class="harvey-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="https://blog.harvey-os.org">Blog</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="https://github.com/harvey-os/harvey/issues">Issues</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="https://groups.google.com/forum/#!forum/harvey">Mailing List</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="https://harvey-os.org/faq">FAQ</a>
+            </nav>
+          </div>
+          <span class="harvey-mobile-title mdl-layout-title">
+            <a href="/" >
+              <img class="harvey-logo-image-phone" src="images/harvey-os-logo-head.png">
+            </a>
+          </span>
 
-<div id="content">
-	<h1><a href="{{.BasePath}}/">The Harvey OS Blog</a></h1>
+        </div>
+      </div>
+
+      <div class="harvey-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="harvey-logo-image-drawer" src="images/harvey-os-logo.png">
+        </span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="https://github.com/harvey-os/harvey/issues">Issues</a>
+          <a class="mdl-navigation__link" href="https://github.com/harvey-os/harvey/pulls">Pull Requests</a>
+          <a class="mdl-navigation__link" href="https://sevki.io/harvey/sys/man/1/0intro">Man Pages</a>
+          <a class="mdl-navigation__link" href="https://blog.harvey-os.org">Blog</a>
+          <div class="harvey-drawer-separator"></div>
+          <span class="mdl-navigation__link" href="">Social</span>
+          <a class="mdl-navigation__link" href="https://twitter.com/harvey_os">Twitter</a>
+          <a class="mdl-navigation__link" href="https://plus.google.com/b/103565762702502491953/103565762702502491953">Google+</a>
+          <a class="mdl-navigation__link" href="https://www.facebook.com/Harvey-OS-1560730044241574/">Facebook</a>
+          <a class="mdl-navigation__link" href="https://github.com/Harvey-OS/harvey">Github</a>
+        </nav>
+      </div>
+
+      <div class="harvey-content mdl-layout__content">
+        <a name="top"></a>
+
+<div class="demo-container mdl-grid">
+	<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+	<div class="demo-content  content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+
 	{{template "content" .}}
-</div><!-- #content -->
+</div>
+</div>
+        <footer class="harvey-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+            <div class="mdl-mega-footer--left-section">
+              <button class="mdl-mega-footer--social-btn" >
+                <a href="https://plus.google.com/b/103565762702502491953/103565762702502491953">
+                  <svg viewBox="0 0 512 512"><path fill="#fff" d="M179.7 237.6L179.7 284.2 256.7 284.2C253.6 304.2 233.4 342.9 179.7 342.9 133.4 342.9 95.6 304.4 95.6 257 95.6 209.6 133.4 171.1 179.7 171.1 206.1 171.1 223.7 182.4 233.8 192.1L270.6 156.6C247 134.4 216.4 121 179.7 121 104.7 121 44 181.8 44 257 44 332.2 104.7 393 179.7 393 258 393 310 337.8 310 260.1 310 251.2 309 244.4 307.9 237.6L179.7 237.6 179.7 237.6ZM468 236.7L429.3 236.7 429.3 198 390.7 198 390.7 236.7 352 236.7 352 275.3 390.7 275.3 390.7 314 429.3 314 429.3 275.3 468 275.3"/></svg>
+                </a>
+              </button>
+                            &nbsp;
+              <button class="mdl-mega-footer--social-btn">
+                <a href="https://www.facebook.com/Harvey-OS-1560730044241574/" class="icon-10 facebook" title="Facebook">
+                  <svg viewBox="0 0 512 512"><path fill="#fff" d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z"/></svg><!--[if lt IE 9]><em>Facebook</em><![endif]-->
+                </a>
+              </button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn">
+                <a href="https://twitter.com/harvey_os" class="icon-26 twitter" title="Twitter">
+                  <svg viewBox="0 0 512 512"><path fill="#fff" d="M419.6 168.6c-11.7 5.2-24.2 8.7-37.4 10.2 13.4-8.1 23.8-20.8 28.6-36 -12.6 7.5-26.5 12.9-41.3 15.8 -11.9-12.6-28.8-20.6-47.5-20.6 -42 0-72.9 39.2-63.4 79.9 -54.1-2.7-102.1-28.6-134.2-68 -17 29.2-8.8 67.5 20.1 86.9 -10.7-0.3-20.7-3.3-29.5-8.1 -0.7 30.2 20.9 58.4 52.2 64.6 -9.2 2.5-19.2 3.1-29.4 1.1 8.3 25.9 32.3 44.7 60.8 45.2 -27.4 21.4-61.8 31-96.4 27 28.8 18.5 63 29.2 99.8 29.2 120.8 0 189.1-102.1 185-193.6C399.9 193.1 410.9 181.7 419.6 168.6z"/></svg><!--[if lt IE 9]><em>Twitter</em><![endif]-->
+                </a>
+              </button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn">
+                <a href="https://github.com/Harvey-OS/harvey" class="icon-13 github" title="GitHub">
+                  <svg viewBox="0 0 512 512"><path fill="#fff" d="M256 70.7c-102.6 0-185.9 83.2-185.9 185.9 0 82.1 53.3 151.8 127.1 176.4 9.3 1.7 12.3-4 12.3-8.9V389.4c-51.7 11.3-62.5-21.9-62.5-21.9 -8.4-21.5-20.6-27.2-20.6-27.2 -16.9-11.5 1.3-11.3 1.3-11.3 18.7 1.3 28.5 19.2 28.5 19.2 16.6 28.4 43.5 20.2 54.1 15.4 1.7-12 6.5-20.2 11.8-24.9 -41.3-4.7-84.7-20.6-84.7-91.9 0-20.3 7.3-36.9 19.2-49.9 -1.9-4.7-8.3-23.6 1.8-49.2 0 0 15.6-5 51.1 19.1 14.8-4.1 30.7-6.2 46.5-6.3 15.8 0.1 31.7 2.1 46.6 6.3 35.5-24 51.1-19.1 51.1-19.1 10.1 25.6 3.8 44.5 1.8 49.2 11.9 13 19.1 29.6 19.1 49.9 0 71.4-43.5 87.1-84.9 91.7 6.7 5.8 12.8 17.1 12.8 34.4 0 24.9 0 44.9 0 51 0 4.9 3 10.7 12.4 8.9 73.8-24.6 127-94.3 127-176.4C441.9 153.9 358.6 70.7 256 70.7z"/></svg><!--[if lt IE 9]><em>GitHub</em><![endif]-->
+                </a>
+              </button>
 
-<div id="footer">
-	<p>
-	Except as
-	<a href="https://developers.google.com/site-policies#restrictions">noted</a>,
-	the content of this page is licensed under the Creative Commons
-	Attribution 3.0 License,<br>
-	and code is licensed under a <a href="//harvey-os.org/LICENSE">BSD license</a>.<br>
-	<a href="//golang.org/doc/tos.html">Terms of Service</a> | 
-	<a href="//www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
-	</p>
-</div><!-- #footer -->
+            </div>
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Back to Top
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
 
-</div><!-- .container -->
-</div><!-- #page -->
 
-</body>
-<script src="/lib/godoc/jquery.js"></script>
-<script src="/lib/godoc/playground.js"></script>
-<script src="/lib/godoc/play.js"></script>
-<script src="/lib/godoc/godocs.js"></script>
-<script>
-$(function() {
-	// Insert line numbers for all playground elements.
-	$('.playground > pre.numbers, .code > pre.numbers').each(function() {
-		var $spans = $(this).find('> span');
+          <div class="mdl-mega-footer--bottom-section">
 
-		// Compute width of number column (including trailing space).
-		var max = 0;
-		$spans.each(function() {
-			var n = $(this).attr('num')*1;
-			if (n > max) max = n;
-		});
-		var width = 2;
-		while (max > 10) {
-			max = max / 10;
-			width++;
-		}
+            <a class="harvey-link mdl-typography--font-light" href="https://blog.harvey-os.org">Blog</a>
+            <a class="harvey-link mdl-typography--font-light" href="https://github.com/Harvey-OS/harvey/blob/master/LICENSE">License</a>
+            <a class="harvey-link mdl-typography--font-light" href="https://github.com/Harvey-OS/harvey/wiki/Code-of-Conduct">Code of Conduct</a>
+          </div>
 
-		// Insert line numbers with space padding.
-		$spans.each(function() {
-			var n = $(this).attr('num')+' ';
-			while (n.length < width) n = ' '+n;
-			$('<span class="number">').text(n).insertBefore(this);
-		});
-	});
-
-	initPlayground(new HTTPTransport());
-});
-</script>
+        </footer>
+      </div>
+    </div>
+    <script src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  </body>
 </html>
 {{end}}
 

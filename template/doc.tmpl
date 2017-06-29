@@ -64,7 +64,7 @@
 
 {{define "image"}}
 <div class="image">
-  <img src="{{.URL}}"{{with .Height}} height="{{.}}"{{end}}{{with .Width}} width="{{.}}"{{end}}>
+  <img src="{{.URL}}" style="width:100%" {{with .Height}} height="{{.}}" {{end}}{{with .Width}} width="{{.}}"{{end}}>
 </div>
 {{end}}
 
