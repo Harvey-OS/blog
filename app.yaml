@@ -10,7 +10,7 @@ handlers:
   upload: static/harvey-os-logo.png
 - url: /images/harvey-os-logo-head.png
   static_files: static/harvey-os-logo-head.png
-  upload: static/harvey-os-logo-head.png  
+  upload: static/harvey-os-logo-head.png
 - url: /styles.css
   static_files: static/styles.css
   upload: static/styles.css
